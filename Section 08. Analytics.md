@@ -2,7 +2,7 @@
 * serverless discovery and definition of table definitions and schema
 * custom ETL jobs
 
-<img width="532" height="424" alt="image" src="https://github.com/user-attachments/assets/66cfb5a4-3256-468c-8d3d-9691666cc547" />
+<img width="332" height="424" alt="image" src="https://github.com/user-attachments/assets/66cfb5a4-3256-468c-8d3d-9691666cc547" />
 
 Glue crawlers scans data in S3, creates schema, then populates Glue Data Catalog (GDC).
 once catalogued in GDC, you can treat the unstructured data like it is structured in
@@ -66,48 +66,121 @@ Ways to run a Glue job
 
 ## Glue anti-patterns
 * Multiple ETL engines: not a good idea, use Data Pipeline EMR
+* used to be an anti-pattern, but streaming data on Glue is now okay.
+
+# 134. AWS Glue Studio
+* visual interface for ETL workflows.
+* visual job dashboard
+<img width="409" height="390" alt="image" src="https://github.com/user-attachments/assets/a7bf65d9-2102-4849-89d1-223276720ecf" />
+
+# 135. AWS Glue Data Quality
+* integrates into Glue jobs to check data quality rules.
+* uses DQDL ([data quality definition language](https://docs.aws.amazon.com/glue/latest/dg/dqdl.html))
+<img width="264" height="499" alt="image" src="https://github.com/user-attachments/assets/c9112194-a592-46b3-9507-520546057e4a" />
 
 
+# 136. AWS Glue DataBrew
+* a visual data prep tool (like Power Query)
+* 250 ready made transformation
+* $1 per session or
+* $0.48 per node hour for jobs
 
+# 138. Handling PII in DataBrew Transformations
+Methods to deal with PII include
+* substitution
+* shuffling
+* Encryption
+  - deterministic
+  - probabilistic
+* delete
+* mask out
+* hashing
 
+# 139. AWS Glue Workflows
+* Design multi-job, multi-crawler ETL processes run together.
+* designed to be used within Glue.
+* from console or API.
+* Can be triggered
+  - schedule
+  - on demand
+  - EventBridge events
 
+# 140. AWS Lake Formation
+* built on top of Glue.
+* Load data and monitor data flows.
+* Anything Glue can do, Lake Formation can do.
 
+<img width="465" height="307" alt="image" src="https://github.com/user-attachments/assets/5f2f15e0-f843-499b-bf75-bde5398b6354" />
+<br>
+<img width="315" height="349" alt="image" src="https://github.com/user-attachments/assets/dfaf99a6-e3c6-488c-8289-17a799802fbf" />
 
+# 142. Amazon Athena
+* interactive query service for S3.
+* Built with presto
+* serverless
 
+## 143. Amazon Athena and Glue, Costs, and Security
 
+<img width="565" height="210" alt="image" src="https://github.com/user-attachments/assets/f203f94b-1f10-4a62-b698-64b572156a25" />
 
+### Athena Workgroups
+* used to organise users/teams/app.
+* integrates with IAM, CloudWatch and SNS
 
+### Athena cost model
+* pay as you go
+  - $5 per TB scanned
+  - successful or cancelled queries count, failed queries do not.
+  - columnar format can you 30 to 90% of cost and better performance.
+* Glue and S3 are separate charge.
 
+### Athena Security
+* access control with IAM, ACL and bucket policies
+* Encrypt results at rest in S3.
+* TLS encrypts in-transit data.
 
+### Athena anti-patterns
+* highly formatted reports > use QuickSight
+* ETL > use Glue 
 
+## 144. Athena Performance
+### Optimisation
+* use columnar format such as Parquet or ORC
+* Small number of large files is better than large number of small files for Athena.
+* Use partition.
 
+## 145. Athena ACID Transactions
+* To implement ACID in Athena, change the table_type to **ICEBERG** in your CREATE TABLE command.
+* concurrrent users can make row-level changes.
+* compatible with EMR, spark and other iceberg formats.
+* time travel operations.
 
+# 146. Apache Iceberg and Athena / EMR / Glue Integration
+* Created by Netflix, but later opened sourced.
+* a table format for data lakes, petabyte scale.
+* ACID compliant
+* row level updates and delete for GDPR compliance.
+* schema evolution
+* time travel
+* metadata management
 
+<img width="471" height="369" alt="image" src="https://github.com/user-attachments/assets/79d6f279-8ed7-43c0-8c17-9860678c55ab" />
 
+AWS Glue Catalogue replace **Hive**. 
 
+## 147. Athena Fine-Grained Access to AWS Glue Data Catalog
+IAM based database and table level security.
 
+## 148. Apache Spark
 
+<img width="262" height="415" alt="image" src="https://github.com/user-attachments/assets/c3e64086-bcd0-44ea-8291-0c329e4d2f35" />
 
+basically MapReduce is shit, we replaced it with Spark.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Distributed processing framework for big data.
+* has in-memory caching
+* optimisation engine
+* support python, scala, R and Java
 
 
 
