@@ -179,11 +179,22 @@ basically MapReduce is shit, we replaced it with Spark.
 
 * Distributed processing framework for big data.
 * has in-memory caching
-* optimisation engine
+* optimisation engine for queries
 * support python, scala, R and Java
+* not made for OLTP
 
+### how spark work under the hood
 
+<img width="451" height="529" alt="image" src="https://github.com/user-attachments/assets/a4e88920-9e0b-4865-abd1-afe42545dff3" />
 
+<img width="689" height="511" alt="image" src="https://github.com/user-attachments/assets/a7746212-72c9-4f3d-be5c-9093f4a1c576" />
+
+* Spark SQL gives the sql interface to the EMR cluster.
+* GraphX is not popular, superceded by third party graph processing options.
+
+### Spark Structured Streaming
+
+<img width="201" height="254" alt="image" src="https://github.com/user-attachments/assets/955b4348-7023-45aa-bb03-44351b2e3ffd" />
 
 
 
