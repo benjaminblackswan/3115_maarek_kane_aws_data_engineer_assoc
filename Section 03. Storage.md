@@ -61,19 +61,93 @@ You can see there are two tabs, one for **General purpose** buckets and one for 
 
 upload the coffee.jpg
 
-### Public vs. Private URL
+Click on **cofee.jpg** to see Object Overview
+
+### Public vs. Pre-Signed URL
+
+The **Object URL** you see in Object Overview is the public URL, if you click on the copy icon, and paste it in the new tab, you will get an error message.
+
+<img width="870" height="376" alt="image" src="https://github.com/user-attachments/assets/4ad584cd-184f-45d0-adf7-b65694a5c0e7" />
+
+<img width="954" height="193" alt="image" src="https://github.com/user-attachments/assets/cd8037fa-8f03-4008-ac63-91d8bc11ae9e" />
+
+However if you click on **Open** icon, you can see the picture in a new tab, this is because AWS creates a private URL and opens it in a new tab.
+
+<img width="1436" height="246" alt="image" src="https://github.com/user-attachments/assets/5ea3b065-ebfc-4d13-b2aa-280ac11337ec" />
+
+<img width="1260" height="836" alt="image" src="https://github.com/user-attachments/assets/6808cd8e-eb98-44c7-a13e-e888b02e7666" />
+
+The private URL might look the same, but if you click on the address bar, it will display the private parts after the public url. 
+
+<img width="868" height="335" alt="image" src="https://github.com/user-attachments/assets/7917224d-689c-42a2-88d4-f25c58996f1a" />
+
+<img width="1264" height="116" alt="image" src="https://github.com/user-attachments/assets/170b7d11-4873-4e79-9096-5c8e9d9f5980" />
+
+This private part is called **S3 pre-signed URL**.
+
+### Create Folder
+
+At the Bucket level, click **Create Folder**
+
+<img width="383" height="98" alt="image" src="https://github.com/user-attachments/assets/eb03d6da-44d8-46b9-b14f-ff0c3c718f34" />
+
+# 26. Amazon S3 Security - Bucket Policy
+
+There are two types of Security in S3, User-based and Resource-based.
+
+* User-based
+  - IAM policies
+
+* Resource-based
+  - Bucket policies - buket wide rules from s3 console
+  - Object Access Control List
+  - Bucket Access Control List
+
+an IAM pricipal can access an S3 object if
+* the user IAM permissions allows it or resource policy allows it
+* **AND** there is no explicity DENY
+
+## S3 Bucket policies
+* JSON based
+
+<img width="498" height="410" alt="image" src="https://github.com/user-attachments/assets/7731d751-850e-44cc-a983-3cb3048ac5e4" />
 
 
 
 
 
-<img width="1155" height="607" alt="image" src="https://github.com/user-attachments/assets/08c265d5-d16a-4103-947c-dc588a4d7e61" />
 
 
 
 
 
-# 52. Amazon EFS (Network File System) <img width="39" height="168" alt="image" src="https://github.com/user-attachments/assets/06e8746c-f5d6-4527-bd2c-1f7133e8e153" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 52. Amazon EFS (Network File System)
+
+<img width="39" height="168" alt="image" src="https://github.com/user-attachments/assets/06e8746c-f5d6-4527-bd2c-1f7133e8e153" />
+
 * storage that can be mounted to many EC2
 * EFS works with EC2 instances in multi-AZ
 * very expensive
@@ -100,6 +174,7 @@ upload the coffee.jpg
 * Availabililty and durability
   - Standard
   - One Zone
+
 
 ## 52. EFS Hands-on
 
