@@ -95,6 +95,12 @@ you want to copy a snapshot to another region for backup
 ### DBLINK
 connect Redshift to PostgreSQL
 
+
+
+
+
+
+
 ## 89. Redshift Integration / WLM / Vacuum
 * S3
   - export parallelly to multiple S3 files, import from S3 or even sit on top of S3 using Redshift.
@@ -115,11 +121,281 @@ connect Redshift to PostgreSQL
 
 ### Automatic Workload Management
 * create up to 8 queues
+* default 5 queues with even memory allocation
 
 
 ### Manual Workload Management
 * 1 default queue with concurrency level of 5
-* one superuser queue with concurrency leve l5111111111111111111111111111111111111111111111111111111
+* one superuser queue with concurrency level of 1
+* define up to 8 manual queues, concurrency level of 50
+
+
+### Short Query Acceleration (SQA)
+* prioritize short-running queries over longer-running ones.
+* can be used to replace Workload Management
+
+
+### Vaccum command
+* recovers spaces from deleted rows
+* four types of VACUUM command
+  - VACUUM FULL
+  - VACUUM DELETE ONLY
+  - VACUUM SORT ONLY
+  - VACUUM REINDEX
+  
+
+### Redshift anti-patterns
+
+you should **NOT** use Redshift for the following situations
+* Small datasets > use RDS
+* OLTP > use RDS and DynanoDB
+* Unstructured data > use EMR
+* Blob data (object storage) > use S3
+
+
+## 90. Redshift Resizing
+
+* Elastic resize
+  - quickly add or remove nodes of the same type
+  - designed to minimise downtime, few minutes
+* Classic resize
+  - allows you to change node type and number of nodes
+  - downtime can take hours or even days
+  - to reduce downtime in classic resize operation, we can use **Snapshot, restore and resize** techniques
+
+## 91. RA3 Nodes, Cross-Region Data Sharing, Redshift ML
+
+* RA3 nodes
+  - this node is designed specifically for Redshift
+  - compute and storage have been decoupled, so that compute and storage can scale independently in RA3 node type
+  - Storage is managed, and is SSD based
+  - Allows **Cross-region data sharing**, share live data across regions
+* Redshift data lake export
+  - unload Redshift query to S3 in **Parquet** format
+  - Parquet is 2x faster to unload and consumes up to 6x less storage
+  - compatible with Redshift Spectrum, Athena, EMR and SageMaker
+* Spatial data types: geometry and geography
+* Redshift ML
+
+  - <img width="626" height="462" alt="image" src="https://github.com/user-attachments/assets/6c5aa145-ed9e-47c3-8899-966a29bc3f66" />
+
+## 92. Redshift Security
+
+* Using Hardware Security Module (HSM)
+  - use a client and server certificate to establish connection between Redshift and HSM
+  - must create encrypted cluster first before moving in data
+* Defining access privilegs for user or group
+  - use GRANT or REVOKE command in SQL
+
+## 93. Redshift Serverless
+* automatically scaling and provisioning of Redshift workload
+* optimize costs and performance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
