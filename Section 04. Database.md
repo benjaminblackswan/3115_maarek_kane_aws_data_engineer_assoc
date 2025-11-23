@@ -188,29 +188,82 @@ you should **NOT** use Redshift for the following situations
   - use GRANT or REVOKE command in SQL
 
 ## 93. Redshift Serverless
-* automatically scaling and provisioning of Redshift workload
-* optimize costs and performance
+* Automatically scaling and provisioning of Redshift workload
+* Optimize costs and performance using ML
+* Easy spin up of environments and ad-hoc business analysis
+* serverless endpoint or query via consoles's query editor.
+
+### Getting started with Redshift Serverless
+* Must create IAM role manually with allow on action **redshift-serverless**
+* must be fine the following
+  - database name
+  - admin user credentials
+  - VPC
+  - encryption settings
+  - audit logging
+* Can manage snapshots and recovery points
 
 
+### Resource Scaling in Serverless
+* Billed in terms of **Redshift Processing Units** (RPU), as oppose to servers
+* RPU hours plus storage
+* you can set base RPU and max RPU
 
+### Redshift serverless can **Not** do the following
+* parameter groups
+* workload managemnet
+* partner integretaion
+* maintenance windows
+* version tracks
+* no public endpoint
 
+### Redshift Serverless monitoring
+* Monitoring views
+* CloudWatch logs
+* CloudWatch metrics
 
+## 94. Redshift Materialized Views
 
+* It is precomputed results based on sql queries over one or more base tables, the result of the query is stored on the database
+* This can speed up the query result as the data does not need to computed during run time.
+* Data in materialized view must be explicitly refreshed if the underlying tables' data change.
 
+## 95. Redshift Data Sharing / Data Shares
+* Securely share live data across Redshift clusters for read purposes
+* good for workload isolation, cross group collaboration, sharing data between environments
+* Clusters must be encrypted and on RA3
 
+## 96. Redshift Lambda UDF
 
+* Use custom functions in AWS Lambda inside SQL queries
+* tying up Lambda with Redshift using UDF
+* using AWSLambdaRole IAM policy to grant permissions to Lambda on your cluster's IAM role
 
+## 97. Redshift Federated Queries
 
+* Query and analyse across databases, warehouses and data lakes
+* Ties Redshift to RDS or Aurora
+* avoids the need for ETL
+* Must be in the same VPC or using VPC peering
+* Credentials must be in AWS secrets manager
+* include secrets in IAM roles for your Redshift cluster
+* Read only access
 
+<img width="319" height="462" alt="image" src="https://github.com/user-attachments/assets/999bd717-0a14-48c7-8f19-6332682810f0" />
 
+## 98. Redshift System Tables and System Views
+* SYS views
+* STV tables
+* SVV views
+* STL views
+* SVCS views
+* SVL views
 
+## 99. Redshift Data API
 
+Secure HTTP endpoint for SQL statements for redshift clusters
 
-
-
-
-
-
+<img width="526" height="137" alt="image" src="https://github.com/user-attachments/assets/b09ceede-01e1-4176-ba82-69d82ccf30c4" />
 
 
 
