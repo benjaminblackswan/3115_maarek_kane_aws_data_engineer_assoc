@@ -1,3 +1,153 @@
+# DynamoDB
+
+## 58. Amazon DynamoDB
+
+### Traditional RDBMS 
+
+<img width="616" height="246" alt="image" src="https://github.com/user-attachments/assets/e94055d4-20f4-462e-99c8-dc49475900e8" />
+
+* strong requirements about how data should be modelled
+* ability to do query joins, aggregations and complex computations
+* uses a dialect of SQL
+* horizonal scaling is limited
+
+### NoSQL databases
+
+* non relational
+* distributed
+* does not support query joins (or very limited)
+* all data must be present in one row
+* does not perform aggregation
+* examples include MongoDB and AWS DynamoDB
+* ability to scale horizonally
+
+### Amazon DynamoDB
+
+* fully managed
+* replication across multiple AZ
+* can scale to massive workloads
+* distributed database
+* low latency on retrieval
+
+#### Basic of DynamoDB
+* made of tables
+* each table has a primary key
+* rows are called **items**
+* columns are called **attributes**
+* attributes can be nested and added later
+* data types supported are
+  - Scalar types: string, number, binary, boolean, null
+  - Document types : list, map
+  - Set types : string set, number set, binary set
+
+#### how to choose primary keys for DynamoDB
+
+* Option 1 : Partition Key (HASH)
+  - partition key must be unique for each item (row)
+  - partition key must be diverse
+
+    <img width="355" height="308" alt="image" src="https://github.com/user-attachments/assets/b33d156e-22e1-4cf5-8742-1f4f386071bf" />
+
+* Option 2 : Partition key + Sort Key (HASH + RANGE)
+  - the combination must be unique for each item
+  - data is grouped by partition key
+
+example of a good **Partition Key** is movie ID (as oppose to producer name, actor name, movie language), because movie_ID is unique for each movie, therefore it has the highest cardinality, therefore unique and diverse.
+
+## 59. Amazon DynamoDB - Hands On
+
+Table name: Users
+Partition Key: user_id    string
+Sort Key: empty
+
+table setting > Customize settings
+
+#### Table class
+
+DynamoDB Standard vs. DynamoDB Standard-IA, Standard-IA is for infrequently accessed data.
+
+#### Read/write capacity settings
+
+Capacity mode: on-demand vs. provisioned, choose provisioned
+
+Read capacity: auto scaling off 2 CU
+Write capacity: auto scaling off 2 CU
+
+Warm throughput: keep default values for both read and write operations
+
+#### Encryption at rest
+
+AWS owned key
+
+**click create table**
+
+<img width="762" height="245" alt="image" src="https://github.com/user-attachments/assets/0ceca2a9-6b9b-4bc0-85a5-7e7b2b2589a1" />
+
+<img width="715" height="133" alt="image" src="https://github.com/user-attachments/assets/65c05e19-63b9-444b-b430-8fa458793709" />
+
+
+<img width="812" height="649" alt="image" src="https://github.com/user-attachments/assets/8524df0b-a535-4ce2-8884-75fb84ffee59" />
+
+Create our first item
+
+<img width="800" height="455" alt="image" src="https://github.com/user-attachments/assets/ad1f5646-16a1-4c04-9e64-9497e7e1050b" />
+
+Create our second item
+
+<img width="846" height="311" alt="image" src="https://github.com/user-attachments/assets/24cdea2e-f1bd-4179-8736-8cc0eae32bdf" />
+
+Now if you have a look at the table, you will see that all three attributes are there in the table, it just show nulls for the items without the attribute.
+
+<img width="1216" height="273" alt="image" src="https://github.com/user-attachments/assets/b5f0d257-4299-4ab6-9ea0-f832a1ac7eb6" />
+
+Lets create a second table called **UserPosts**
+
+partition key: user_id - string
+sort key: post_ts  - string
+
+<img width="819" height="251" alt="image" src="https://github.com/user-attachments/assets/28d36ed6-0f76-442e-b0bf-38cdd03799a0" />
+
+## 60. Amazon DynamoDB in Big Data
+
+anti pattern for DynamoDB
+* prewritten application tiet to traditional relational db, use RDS
+* joins or complex transactions.
+* for blob data, store in S3
+
+
+## 61. Amazon DynamoDB - Throughput (RCU & WCU)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Redshift
 
 ## 84. Amazon Redshift Intro & Architecture
