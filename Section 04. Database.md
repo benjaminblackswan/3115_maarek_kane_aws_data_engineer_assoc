@@ -203,32 +203,63 @@ Scan
 
 ## 63. Amazon DynamoDB - Basic APIs - Hands-On
 
-Explore Table Items
+<img width="304" height="383" alt="image" src="https://github.com/user-attachments/assets/f77cc7ed-fec4-455c-a9df-bfa16ae8682c" /> <br>
 
-scan 
+<img width="473" height="268" alt="image" src="https://github.com/user-attachments/assets/9a2a2002-7181-4b68-bc67-73802b80ed3d" /> <br>
 
-<img width="1568" height="433" alt="image" src="https://github.com/user-attachments/assets/ce497893-c0bf-4213-825e-ba00f24962a7" />
+<img width="534" height="168" alt="image" src="https://github.com/user-attachments/assets/723fd0c2-4d5e-40c1-959a-ca5ebdfaa3df" /> <br>
 
+<img width="1568" height="433" alt="image" src="https://github.com/user-attachments/assets/ce497893-c0bf-4213-825e-ba00f24962a7" /> <br>
 
+Click on scan, which will scan the entire table.
 
+Lets create another item
 
+<img width="842" height="435" alt="image" src="https://github.com/user-attachments/assets/b2115400-635f-474c-861a-80e43b0fba16" />
 
-
-
-
-
-
-
-
+This is called a **PutItem**
 
 
+## 65. Amazon DynamoDB - Indexes (LSI & GSI)
+### Local Secondary Index (LSI)
+* Alternative sort key
+* up to 5 LSI per table
+* must be defined at the table creation
 
 
+for example, if you want to sort this table by user_id and game_ts, you must create a LSI based on Game_TS.
+
+<img width="718" height="329" alt="image" src="https://github.com/user-attachments/assets/eae56bd5-fd3c-4652-9f02-4e4a1354de49" />
+
+### Global Secondary Index (GSI)
+* alternative primary key, ie HASH + RANGE from the base table.
+* must provision RCU and WRU for index
+* can be added or modified after table creation.
+
+<img width="789" height="311" alt="image" src="https://github.com/user-attachments/assets/42f7f530-5ce6-417c-acd6-194ad46fe29b" />
 
 
+### GSI vs. LSI throttling
+#### GSI
+* if the writes are throttled on the GSI, then the main table will be throttled.
+* even if the WCU on the main tables are fine
+
+#### LSI
+* uses the WCUs and RCUs of the main table
+* no special throttling considerations
 
 
+### Indexes (LSI & GSI) hands-on
 
+Create a new table, there will be an option to create local index or global index
+
+<img width="821" height="330" alt="image" src="https://github.com/user-attachments/assets/0bd2f130-c201-48a4-adaa-9c91e04e53f2" />
+
+## 67. Amazon DynamoDB - PartiQL
+
+use a sql like syntax to manipulate DynamoDB table
+
+<img width="227" height="350" alt="image" src="https://github.com/user-attachments/assets/99e27d00-c107-4c71-83ca-bc012f32f254" />
 
 
 
