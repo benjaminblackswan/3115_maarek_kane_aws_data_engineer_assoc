@@ -117,6 +117,184 @@ anti pattern for DynamoDB
 
 ## 61. Amazon DynamoDB - Throughput (RCU & WCU)
 
+### Provisioned vs. On-demand
+* Provisioned mode
+  - You need to plan capacity beforehand
+  - pay for the provisioned read and write capacity units
+  - cheaper
+* On-Demand mode
+  - automatically scale up or down with your workloads
+  - no plannig needed
+  - more expensive than provisioned mode
+
+### Provisioned
+
+* tables must have provisioned read and write capacity units (RCU and WRU)
+* there is option to set up auto-scaling of throughput
+* Burst capacity can exceed throughput temporarily
+
+#### Write Capacity Unit WCU
+one WCU represents one write per second for an item up to 1 kb in size.
+
+#### Read Capacity Unit RCU
+
+* strongly consistent read vs Eventually consistent read
+
+One RCU represents one Strongly Consistent Read per second, or two Eventually Consistent Reads per second, up to 4 KB in size
+
+
+### Partitions internal
+* data is stored in partitions
+* partition keys go thourgh a hashing algo to know which partion they go to
+* WCU and RCU are spread evenly across partitions
+* if you exceed provisioned RCUs and WCUs, then you will get _ProvisionedThroughputExceededException_
+  - Exponential backoff
+  - Distributed partition keys
+  - use DynamoDB Accelerator
+
+### On-Demand
+
+* Unlimited WCU and RCU, no throttle and more expensive
+* charged in terms of Read Request Units (RRU) and Write Request Units (WRU)
+* about 2.5 times more expensive than provisioned capacity
+
+### To edit RCU or WCU, go to 
+
+<img width="1239" height="364" alt="image" src="https://github.com/user-attachments/assets/b01f0c65-904b-4875-8f2a-727b7c0273a0" />
+
+You can even change the capacity mode 
+
+<img width="1792" height="205" alt="image" src="https://github.com/user-attachments/assets/924fc086-dffd-4bff-baf6-7425c1d8defc" />
+
+## 63. Amazon DynamoDB - Basic APIs
+
+
+### Writing Data
+
+**Putitem** : create new item or fully replace an old item (same as Primary Key), consumes WCUs
+
+**UpdateItem** : Edits an existing item's attributes or adds a new item if it doesn't exist
+
+**Conditional Writes** : 
+
+### Reading Data
+
+**GetItem** : Read based on Primary key
+
+Query
+* keyConditionExpression
+* FilterExpression
+
+Scan
+* scan the entire table and then filter out data
+
+### Deleting Data
+
+**DeleteItem** : delete an individual item
+**DeleteTable** : delete the whole table  without scanning
+
+### Batch Operations
+
+#### BatchWriteItem
+
+#### BatchGetItem
+
+#### PartiQL
+
+## 63. Amazon DynamoDB - Basic APIs - Hands-On
+
+Explore Table Items
+
+scan 
+
+<img width="1568" height="433" alt="image" src="https://github.com/user-attachments/assets/ce497893-c0bf-4213-825e-ba00f24962a7" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
